@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: nodejs-pipeline-run-
+spec:
+  serviceAccountName: pipeline
+  pipelineRef:
+    name: nodejs-pipeline
+  workspaces:
+    - name: pipeline-shared-data
+      persistentVolumeClaim:
+        claimName: pipeline-storage

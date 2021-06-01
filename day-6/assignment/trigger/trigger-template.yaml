@@ -1,0 +1,31 @@
+apiVersion: triggers.tekton.dev/v1alpha1 
+kind: TriggerTemplate 
+metadata:
+  name: cong-nextjs
+spec:
+  params: 
+  - name: git-repo-url
+    description: The git repository url
+  - name: image-base
+    description: Image base, not including the tag
+    default: image-registry.openshift-image-registry.svc:5000/cong-nguyen-pipeline-from-scratch/cong-nextjs
+  resourcetemplates: 
+  - apiVersion: tekton.dev/v1beta1
+    kind: PipelineRun
+    metadata:
+      generateName: nodejs-pipeline-run-
+    spec:
+      serviceAccountName: pipeline
+      pipelineRef:
+        name: nodejs-pipeline
+      workspaces:
+        - name: pipeline-shared-data
+          persistentVolumeClaim:
+            claimName: pipeline-storage
+      params:
+      - name: git-url
+        value: $(tt.params.git-repo-url)
+      - name: image-repo
+        value: $(tt.params.image-base)
+      - name: app-name
+        value: cong-nextjs

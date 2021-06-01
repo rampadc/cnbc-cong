@@ -1,0 +1,28 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: yaml-linter-pipeline
+spec:
+  workspaces:
+    - name: shared-workspace
+  tasks:
+    - name: fetch-repository
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+      params:
+        - name: url
+          value: "https://github.com/cloud-native-garage-method-cohort/cong-nguyen-day4-prob2.git"
+    - name: yaml-lint
+      taskRef:
+        name: yaml-lint
+      runAfter:
+        - fetch-repository
+      workspaces:
+        - name: shared-workspace
+          workspace: shared-workspace
+      params:
+        - name: args
+          value: ["."]

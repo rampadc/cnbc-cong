@@ -1,0 +1,11 @@
+apiVersion: triggers.tekton.dev/v1alpha1 
+kind: EventListener 
+metadata:
+  name: express-sample-app
+spec:
+  serviceAccountName: pipeline 
+  triggers:
+  - bindings:
+    - ref: express-sample-app
+    template: 
+      name: express-sample-app

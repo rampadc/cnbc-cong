@@ -1,0 +1,8 @@
+apiVersion: triggers.tekton.dev/v1alpha1 
+kind: TriggerBinding 
+metadata:
+  name: cong-nextjs
+spec:
+  params: 
+  - name: git-repo-url
+    value: $(body.repository.clone_url)

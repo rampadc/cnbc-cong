@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: linter-pipeline-run
+spec:
+  pipelineRef:
+    name: linter-pipeline
+  workspaces:
+    - name: shared-workspace
+      persistentvolumeclaim:
+        claimName: cong-nguyen-live-pvc

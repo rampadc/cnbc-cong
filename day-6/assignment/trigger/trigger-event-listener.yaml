@@ -1,0 +1,11 @@
+apiVersion: triggers.tekton.dev/v1alpha1 
+kind: EventListener 
+metadata:
+  name: cong-nextjs
+spec:
+  serviceAccountName: pipeline 
+  triggers:
+  - bindings:
+    - ref: cong-nextjs
+    template: 
+      name: cong-nextjs

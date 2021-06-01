@@ -1,0 +1,19 @@
+# Based on https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/01_pipeline/01_apply_manifest_task.yaml
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: apply-manifests
+spec:
+  workspaces:
+  - name: source
+  steps:
+    - name: apply
+      image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
+      workingDir: /workspace/source
+      command: ["/bin/bash", "-c"]
+      args:
+        - |-
+          echo Applying manifests.yaml file
+          oc apply -f manifests.yaml
+          echo -----------------------------------

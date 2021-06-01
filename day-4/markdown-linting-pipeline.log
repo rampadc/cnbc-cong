@@ -1,0 +1,18 @@
+STEP-LINT-MARKDOWN-FILES
+
+./README.md:3: MD013 Line length
+./README.md:4: MD013 Line length
+./README.md:5: MD013 Line length
+./README.md:7: MD013 Line length
+./README.md:9: MD013 Line length
+./README.md:11: MD013 Line length
+./README.md:13: MD013 Line length
+./SECOND_EXAMPLE.md:18: MD009 Trailing spaces
+./SECOND_EXAMPLE.md:3: MD013 Line length
+./SECOND_EXAMPLE.md:4: MD013 Line length
+./SECOND_EXAMPLE.md:8: MD013 Line length
+./SECOND_EXAMPLE.md:12: MD013 Line length
+./SECOND_EXAMPLE.md:16: MD013 Line length
+./SECOND_EXAMPLE.md:18: MD013 Line length
+./SECOND_EXAMPLE.md:21: MD013 Line length
+A detailed description of the rules is available at https://github.com/markdownlint/markdownlint/blob/master/docs/RULES.md
